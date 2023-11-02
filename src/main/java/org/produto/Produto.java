@@ -56,4 +56,25 @@ public class Produto {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    public void removerQuantidade(int quantidadeRemovida) {
+        this.quantidade -= quantidadeRemovida;
+    }
+
+    public String obterDescricao() {
+        return descricao;
+    }
+
+    public void adicionarQuantidade(int quantidadeAdicional) {
+        this.quantidade += quantidadeAdicional;
+    }
+
+    public void atualizarPreco(double novoPreco) {
+        this.preco = novoPreco;
+    }
+
+    public double calcularValorTotal() {
+        return preco * quantidade;
+    }
+
 }
