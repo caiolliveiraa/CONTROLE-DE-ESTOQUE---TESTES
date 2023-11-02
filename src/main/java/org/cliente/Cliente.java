@@ -15,7 +15,6 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    // Getters e setters para os atributos
     public int getId() {
         return id;
     }
