@@ -17,7 +17,7 @@ public class Produtotest {
 
     @Before
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         produto = new Produto(1, "Produto de Teste", 10.0, 5, "Descrição do produto de teste");
     }
 
