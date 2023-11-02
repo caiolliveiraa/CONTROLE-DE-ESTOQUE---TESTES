@@ -9,68 +9,56 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import static org.junit.Assert.assertEquals;
 import org.cliente.Cliente;
+import org.produto.Produto;
 
 public class Clientetest {
-    @Mock
     private Cliente cliente;
 
     @Before
     public void setUp() {
-        MockitoAnnotations.openMocks(this);
         cliente = new Cliente(1, "Cliente de Teste", "Endereço de Teste", "teste@teste.com", "123456789");
     }
 
     @Test
-    public void testAtualizarEndereco() {
-        Cliente cliente = Mockito.mock(Cliente.class);
+    public void testClienteProdutoIntegration() {
+        Produto produto = new Produto(1, "Produto de Teste", 10.0, 5, "Descrição do produto de teste");
+        Pedido pedido = new Pedido(cliente);
+        pedido.adicionarItem(produto, 3);
 
-        when(cliente.getEndereco()).thenReturn("Novo Endereço");
+        assertEquals(3, pedido.obterQuantidadeItens());
+        assertEquals(30.0, pedido.calcularValorTotal(), 0.001);
+    }
 
+    @Test
+    public void testClienteAtualizarEndereco() {
         String novoEndereco = "Novo Endereço";
         cliente.atualizarEndereco(novoEndereco);
-
-        verify(cliente).atualizarEndereco(novoEndereco);
-
         assertEquals(novoEndereco, cliente.getEndereco());
     }
 
     @Test
-    public void testAtualizarEmail() {
-        Cliente cliente = Mockito.mock(Cliente.class);
-
-        when(cliente.getEmail()).thenReturn("novoemail@teste.com");
-
+    public void testClienteAtualizarEmail() {
         String novoEmail = "novoemail@teste.com";
         cliente.atualizarEmail(novoEmail);
-
-        verify(cliente).atualizarEmail(novoEmail);
-
         assertEquals(novoEmail, cliente.getEmail());
     }
 
     @Test
-    public void testAtualizarTelefone() {
-        Cliente cliente = Mockito.mock(Cliente.class);
-
-        when(cliente.getTelefone()).thenReturn("987654321");
-
+    public void testClienteAtualizarTelefone() {
         String novoTelefone = "987654321";
         cliente.atualizarTelefone(novoTelefone);
-
-        verify(cliente).atualizarTelefone(novoTelefone);
-
         assertEquals(novoTelefone, cliente.getTelefone());
     }
 
     @Test
-    public void testGetNome() {
-        String nomeEsperado = "Cliente de Teste";
-        assertEquals(nomeEsperado, cliente.getNome());
-    }
+    public void testClienteAdicionarProdutoPedidoIntegration() {
+        Produto produto = new Produto(1, "Produto de Teste", 10.0, 5, "Descrição do produto de teste");
+        Pedido pedido = new Pedido(cliente);
 
-    @Test
-    public void testGetId() {
-        int idEsperado = 1;
-        assertEquals(idEsperado, cliente.getId());
+        pedido.adicionarItem(produto, 2);
+
+        assertEquals(2, pedido.obterQuantidadeItens());
+        assertEquals(20.0, pedido.calcularValorTotal(), 0.001);
     }
 }
+
