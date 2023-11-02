@@ -10,6 +10,7 @@ import org.mockito.MockitoAnnotations;
 import static org.junit.Assert.assertEquals;
 import org.cliente.Cliente;
 import org.produto.Produto;
+import org.pedido.Pedido;
 
 public class Clientetest {
     private Cliente cliente;
@@ -61,4 +62,3 @@ public class Clientetest {
         assertEquals(20.0, pedido.calcularValorTotal(), 0.001);
     }
 }
-
