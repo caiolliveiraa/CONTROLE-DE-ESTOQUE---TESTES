@@ -10,21 +10,30 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import static org.junit.Assert.assertEquals;
 import org.produto.Produto;
+<<<<<<< HEAD
 import org.cliente.Cliente;
 import org.pedido.Pedido;
+=======
+>>>>>>> 0b9052181a36b816fea0d9723dff36f35568cf32
 
 public class Produtotest {
     @Mock
     private Produto produto;
+<<<<<<< HEAD
     private Cliente cliente;
     private Pedido pedido;
+=======
+>>>>>>> 0b9052181a36b816fea0d9723dff36f35568cf32
 
     @Before
     public void setUp() {
         MockitoAnnotations.openMocks(this);
         produto = new Produto(1, "Produto de Teste", 10.0, 5, "Descrição do produto de teste");
+<<<<<<< HEAD
         cliente = new Cliente(1, "Cliente de Teste", "Endereço de Teste", "teste@teste.com", "123456789");
         pedido = new Pedido(cliente);
+=======
+>>>>>>> 0b9052181a36b816fea0d9723dff36f35568cf32
     }
 
     @Test
@@ -54,6 +63,24 @@ public class Produtotest {
         assertEquals(novoPreco, produto.getPreco(), 0.001);
     }
 
+<<<<<<< HEAD
+=======
+    @Test
+    public void testAdicionarQuantidade() {
+        Produto produto = Mockito.mock(Produto.class);
+
+        when(produto.getQuantidade()).thenReturn(5);
+
+        int quantidadeInicial = produto.getQuantidade();
+        int quantidadeAdicional = 3;
+
+        produto.adicionarQuantidade(quantidadeAdicional);
+
+        verify(produto).adicionarQuantidade(quantidadeAdicional);
+
+        assertEquals(quantidadeInicial + quantidadeAdicional, produto.getQuantidade());
+    }
+>>>>>>> 0b9052181a36b816fea0d9723dff36f35568cf32
 
     @Test
     public void testRemoverQuantidade() {
@@ -81,6 +108,7 @@ public class Produtotest {
 
         assertEquals("Descrição do produto de teste", descricao);
     }
+<<<<<<< HEAD
 
     @Test
     public void testAdicionarQuantidadeProdutoAoPedido() {
@@ -157,4 +185,6 @@ public class Produtotest {
         assertEquals(50.0, pedido.calcularValorTotal(), 0.01);
     }
 
+=======
+>>>>>>> 0b9052181a36b816fea0d9723dff36f35568cf32
 }
